@@ -2,12 +2,11 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-
     <title> Французский язык </title>
-    <link rel="stylesheet" href="styles.css">
-   <style>
-    P,h1,h2 {color: black;}
-  </style>
+
+    <style>
+        P,h1,h2 {color: black;}
+    </style>
 </head>
  <body>
   <a href="Грамматика.html"><h1>Грамматика</h1></a>
