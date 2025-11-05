@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Французский язык </title>
+    <!-- Здесь вы подключаете свои стили CSS, если они есть -->
+    <link rel="stylesheet" href="styles.css">
+   <style>
+    P,h1,h2 {color: black;}
+  </style>
 </head>
  <body>
   <a href="Грамматика.html"><h1>Грамматика</h1></a>
