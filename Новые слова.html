@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+<title>Новые слова</title>
+<style>
+  table, th, td {border: 1px solid black;border-collapse: collapse;padding: 8px;}
+</style>
+</head>
+<body>
+<table id="myTable">
+  <thead>
+    <tr><th>Слово</th>
+      <th>Перевод</th></tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<div><input type="text" id="newRecord1Input" placeholder="Введите слово">
+  <input type="text" id="newRecord2Input" placeholder="Введите перевод">
+  <button onclick="addRecord()">Добавить</button></div>
+<button onclick="clearAllData()">Очистить всё</button>
+<script>
+  const STORAGE_KEY = 'myRecords';
+  function addRecordToTable(record1, record2) {
+    const tableBody = document.querySelector('#myTable tbody');
+    const row = tableBody.insertRow();
+    const cell1 = row.insertCell();
+    const cell2 = row.insertCell();
+    cell1.textContent = record1;
+    cell2.textContent = record2;}
+  function addRecord() {
+    const input1 = document.getElementById('newRecord1Input');
+    const input2 = document.getElementById('newRecord2Input');
+    const record1Text = input1.value.trim();
+    const record2Text = input2.value.trim();
+    if (record1Text !== "" || record2Text !== "") {
+      const records = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      const newRecord = {
+        record1: record1Text,
+        record2: record2Text};
+      records.push(newRecord);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+      renderTable();
+      input1.value = '';
+      input2.value = '';}}
+  function renderTable() {
+    const tableBody = document.querySelector('#myTable tbody');
+    tableBody.innerHTML = '';
+    const records = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    records.forEach(record => {
+      addRecordToTable(record.record1, record.record2);});}
+  function clearAllData() {
+    localStorage.removeItem(STORAGE_KEY);
+    renderTable();}
+  window.addEventListener('load', renderTable);
+</script>
+</body>
+</html>
+
+
+
+
